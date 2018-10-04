@@ -72,7 +72,7 @@ def Main():
     # print("socket binded to post", port)
 
     # put the socket into listening mode
-    s.listen(25)
+
     print("socket is listening")
 
     # a forever loop until client wants to exit
@@ -101,23 +101,3 @@ def Main():
 
 if __name__ == '__main__':
     Main()
-
-
-
-
-
-
-
-
-
-s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-s.bind(('127.0.0.1',222))
-while True:
-    data,addr=s.recvfrom(1024)
-    print('Address:',addr,'Data:',data)
-    mylist=list(data.split(':'))
-    intlist=list()
-    for i in range(0,len(mylist)):
-        intlist.append(int(mylist[i]))
-    intlist.sort()
-    s.sendto(str(intlist),addr)
